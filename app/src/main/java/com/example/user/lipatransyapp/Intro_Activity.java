@@ -6,8 +6,10 @@ import android.os.Bundle;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -21,13 +23,49 @@ public class Intro_Activity extends AppCompatActivity {
     private Button btnNext;
     private ViewPagerAdapter viewPagerAdapter;
     private int[] layouts;
+    ViewPager.OnPageChangeListener viewPagerPageChangeListener = new ViewPager.OnPageChangeListener() {
+
+        @Override
+        public void onPageSelected(int position) {
+
+
+            if (position == layouts.length - 1) {
+                btnNext.setVisibility(View.VISIBLE);
+
+                btnNext.setText("Start");
+
+            } else {
+                btnNext.setVisibility(View.GONE);
+//
+
+            }
+        }
+
+        @Override
+        public void onPageScrolled(int arg0, float arg1, int arg2) {
+
+        }
+
+        @Override
+        public void onPageScrollStateChanged(int arg0) {
+
+        }
+    };
     private LinearLayout llmain;
     private TextView[] position;
-
+    private MyPreferences myPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        myPreferences = new MyPreferences(this);
+        if (!myPreferences.isFirstTimeLaunch()) {
+            startMainScreen();
+            finish();
+        }
+
+
         setContentView(R.layout.activity_intro);
 
 
@@ -44,8 +82,6 @@ public class Intro_Activity extends AppCompatActivity {
         };
 
 
-
-
         viewPagerAdapter = new ViewPagerAdapter();
         viewPager.setAdapter(viewPagerAdapter);
         viewPager.addOnPageChangeListener(viewPagerPageChangeListener);
@@ -54,11 +90,12 @@ public class Intro_Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+
                 int current = getItem(+1);
                 if (current < layouts.length) {
-                    // move to next screen
                     viewPager.setCurrentItem(current);
                 } else {
+
                     startMainScreen();
                 }
             }
@@ -67,11 +104,11 @@ public class Intro_Activity extends AppCompatActivity {
 
     }
 
-
     private void startMainScreen() {
+        myPreferences.setFirstTimeLaunch(false);
         Intent intent = new Intent(Intro_Activity.this, com.example.user.lipatransyapp.MainActivity.class);
         startActivity(intent);
-        finish();
+
 
     }
 
@@ -80,35 +117,6 @@ public class Intro_Activity extends AppCompatActivity {
         return viewPager.getCurrentItem() + i;
     }
 
-
-    ViewPager.OnPageChangeListener viewPagerPageChangeListener = new ViewPager.OnPageChangeListener() {
-
-        @Override
-        public void onPageSelected(int position) {
-
-//
-            // changing the next button text 'NEXT' / 'GOT IT'
-            if (position == layouts.length - 1) {
-                // last page. make button text to GOT IT
-                btnNext.setText("Start");
-//                btnSkip.setVisibility(View.GONE);
-            } else {
-                // still pages are left
-                btnNext.setText("Next");
-//                btnSkip.setVisibility(View.VISIBLE);
-            }
-        }
-
-        @Override
-        public void onPageScrolled(int arg0, float arg1, int arg2) {
-
-        }
-
-        @Override
-        public void onPageScrollStateChanged(int arg0) {
-
-        }
-    };
 
 
     public class ViewPagerAdapter extends PagerAdapter {
@@ -144,5 +152,4 @@ public class Intro_Activity extends AppCompatActivity {
             container.removeView(view);
         }
     }
-
 }
