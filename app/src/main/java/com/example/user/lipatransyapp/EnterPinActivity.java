@@ -1,8 +1,6 @@
 package com.example.user.lipatransyapp;
 
 import android.content.DialogInterface;
-import android.content.Intent;
-import android.net.Uri;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -12,54 +10,49 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
-    EditText till_number;
-    EditText seat_number;
-    EditText fare_charge;
-    Button pay_button;
+import com.example.user.lipatransyapp.MainActivity;
+
+public class EnterPinActivity extends AppCompatActivity {
+
+    TextView enter_pin;
+    EditText pin;
+    Button ok_button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_enter_pin);
 
-        till_number = findViewById(R.id.till_number);
-        int till = till_number.getInputType();
-
-
-        seat_number = findViewById(R.id.seat_number);
-        fare_charge = findViewById(R.id.fare_charge);
-        pay_button = findViewById(R.id.pay_button);
-
-
-      
+            pin = findViewById(R.id.user_pin);
 
 
 
+            ok_button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+//                    Account user = new Account();
+//                    if(pin.length() == 4){
+//                        if(pin.getText().toString() == "2018"){
 
-        View.OnClickListener Listener = new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+                            Toast.makeText(EnterPinActivity.this, "Payment Successfull", Toast.LENGTH_SHORT).show();
+//                            AlertDialog confirm = new AlertDialog.Builder(EnterPinActivity.this).create();
+//                            confirm.setTitle("Please confirm Transaction");
+//                            confirm.setMessage("Confirm you are sending " );
 
-
-                if (!till_number.getText().toString().trim().replaceAll("[^0-9]", "").equals("") && !seat_number.getText().toString().trim().equals("") && !fare_charge.getText().toString().trim().equals("") )
-                {
-                    Intent intent = new Intent(MainActivity.this, com.example.user.lipatransyapp.EnterPinActivity.class);
-                    startActivity(intent);
-                }
-
-                else
-                {
-                    Toast.makeText(MainActivity.this, "Please fill all fields", Toast.LENGTH_SHORT).show();
-                }
-            }
-        };
-        pay_button.setOnClickListener(Listener);
-
+                        }
+//                        else{
+//                            Toast.makeText(EnterPinActivity.this, "Incorrect Password", Toast.LENGTH_SHORT).show();
+//                        }
+//                    }
+//                }
+            });
 
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -95,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void about() {
-        AlertDialog about = new AlertDialog.Builder(MainActivity.this).create();
+        AlertDialog about = new AlertDialog.Builder(EnterPinActivity.this).create();
         about.setTitle("About");
         about.setMessage("LipaTransApp\n" +
 
