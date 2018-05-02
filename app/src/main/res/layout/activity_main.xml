@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.user.lipatransyapp.MainActivity">
+    tools:context="com.dan.lipatransy.MainActivity">
 
     <EditText
         android:id="@+id/till_number"
@@ -15,7 +15,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:ems="10"
-        android:hint="Enter Till Number"
+        android:hint="Enter Till Number 174379"
         android:inputType="number"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -31,29 +31,43 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="60dp"
         android:ems="10"
         android:hint="Enter Seat Number"
         android:inputType="number"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.505"
+        app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/till_number" />
 
     <EditText
         android:id="@+id/fare_charge"
         android:layout_width="242dp"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="44dp"
         android:ems="10"
         android:hint="Enter Amount"
         android:inputType="number"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.505"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/seat_number" />
+
+    <EditText
+        android:id="@+id/etPhone"
+        android:layout_width="242dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="128dp"
+        android:ems="10"
+        android:hint="Phone Number"
+        android:inputType="number"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/seat_number" />
 
@@ -70,7 +84,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/fare_charge"
-        app:layout_constraintVertical_bias="0.584" />
+        app:layout_constraintVertical_bias="0.927" />
 
 
 </android.support.constraint.ConstraintLayout>
