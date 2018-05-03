@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.dan.lipatransyapp">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/lipa_launcher_foreground"
+        android:label="Lipa Transy App"
+
+
+        android:roundIcon="@mipmap/lipa_launcher_foreground"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        tools:replace="android:label">
+        <activity android:name="com.dan.lipatransy.MainActivity"></activity>
+
+        <activity android:name="com.dan.lipatransy.Splash_Screen">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name="com.dan.lipatransy.Intro_Activity" />
+
+        <activity android:name="com.dan.lipatransy.EnterPinActivity"></activity>
+
+        <activity android:name="com.dan.lipatransy.ConductorActivity"></activity>
+
+
+    </application>
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+
+</manifest>
